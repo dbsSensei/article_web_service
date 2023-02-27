@@ -1,0 +1,110 @@
+Project article_web_service {
+  database_type: 'PostgreSQL'
+  Note: '''
+   # Article Web Service
+  '''
+}
+
+Table "users" {
+  "id" SERIAL [pk, increment]
+  "full_name" VARCHAR(255) [not null]
+  "email" VARCHAR(255) [not null]
+  "hashed_password" VARCHAR(255) [not null]
+}
+
+Table "sessions" {
+  "id" uuid [pk, not null, default: `uuid_generate_v4()`]
+  "user_id" int [not null]
+  "refresh_token" varchar [not null]
+  "user_agent" varchar [not null]
+  "client_ip" varchar [not null]
+  "is_blocked" boolean [not null, default: false]
+  "expires_at" timestamptz [not null]
+  "created_at" timestamptz [not null, default: `now()`]
+}
+
+Table "articles" {
+  "id" SERIAL [pk, increment]
+  "title" VARCHAR(255) [not null]
+  "author_id" INT [not null]
+  "content" TEXT [not null]
+  "published_at" DATE [not null]
+}
+
+Table "categories" {
+  "id" SERIAL [pk, increment]
+  "name" VARCHAR(255) [not null]
+}
+
+Table "tags" {
+  "id" SERIAL [pk, increment]
+  "name" VARCHAR(255) [not null]
+}
+
+Table "article_categories" {
+  "article_id" INT [not null]
+  "category_id" INT [not null]
+
+Indexes {
+  (article_id, category_id) [pk]
+}
+}
+
+Table "article_tags" {
+  "article_id" INT [not null]
+  "tag_id" INT [not null]
+
+Indexes {
+  (article_id, tag_id) [pk]
+}
+}
+
+Table "comments" {
+  "id" SERIAL [pk, increment]
+  "article_id" INT [not null]
+  "user_id" INT [not null]
+  "comment_date" DATE [not null]
+  "content" TEXT [not null]
+}
+
+Table "likes" {
+  "id" SERIAL [pk, increment]
+  "article_id" INT [not null]
+  "user_id" INT [not null]
+}
+
+Table "views" {
+  "id" SERIAL [pk, increment]
+  "article_id" INT [not null]
+  "view_date" DATE [not null]
+}
+
+Table "images" {
+  "id" SERIAL [pk, increment]
+  "article_id" INT [not null]
+  "url" VARCHAR(255) [not null]
+}
+
+Ref:"users"."id" < "articles"."author_id" [delete: cascade]
+
+Ref:"users"."id" < "sessions"."user_id"
+
+Ref:"articles"."id" < "article_categories"."article_id" [delete: cascade]
+
+Ref:"categories"."id" < "article_categories"."category_id" [delete: cascade]
+
+Ref:"articles"."id" < "article_tags"."article_id" [delete: cascade]
+
+Ref:"tags"."id" < "article_tags"."tag_id" [delete: cascade]
+
+Ref:"articles"."id" < "comments"."article_id" [delete: cascade]
+
+Ref:"users"."id" < "comments"."user_id" [delete: cascade]
+
+Ref:"articles"."id" < "likes"."article_id" [delete: cascade]
+
+Ref:"users"."id" < "likes"."user_id" [delete: cascade]
+
+Ref:"articles"."id" < "views"."article_id" [delete: cascade]
+
+Ref:"articles"."id" < "images"."article_id" [delete: cascade]

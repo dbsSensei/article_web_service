@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "name": "Artificial Intelligence"
+  },
+  {
+    "id": 2,
+    "name": "Cybersecurity"
+  },
+  {
+    "id": 3,
+    "name": "Mobile Apps"
+  },
+  {
+    "id": 4,
+    "name": "Cloud Computing"
+  },
+  {
+    "id": 5,
+    "name": "Virtual Reality"
+  },
+  {
+    "id": 6,
+    "name": "Genetics"
+  },
+  {
+    "id": 7,
+    "name": "Space Exploration"
+  },
+  {
+    "id": 8,
+    "name": "Quantum Physics"
+  },
+  {
+    "id": 9,
+    "name": "Nanotechnology"
+  },
+  {
+    "id": 10,
+    "name": "Climate Change"
+  },
+  {
+    "id": 11,
+    "name": "Marketing Strategies"
+  },
+  {
+    "id": 12,
+    "name": "Entrepreneurship"
+  },
+  {
+    "id": 13,
+    "name": "Supply Chain Management"
+  },
+  {
+    "id": 14,
+    "name": "Corporate Social Responsibility"
+  },
+  {
+    "id": 15,
+    "name": "Financial Planning"
+  },
+  {
+    "id": 16,
+    "name": "Soccer"
+  },
+  {
+    "id": 17,
+    "name": "Basketball"
+  },
+  {
+    "id": 18,
+    "name": "Tennis"
+  },
+  {
+    "id": 19,
+    "name": "Golf"
+  },
+  {
+    "id": 20,
+    "name": "American Football"
+  },
+  {
+    "id": 21,
+    "name": "Film Reviews"
+  },
+  {
+    "id": 22,
+    "name": "Music News"
+  },
+  {
+    "id": 23,
+    "name": "Celebrity Gossip"
+  },
+  {
+    "id": 24,
+    "name": "TV Shows"
+  },
+  {
+    "id": 25,
+    "name": "Gaming Updates"
+  }
+]
